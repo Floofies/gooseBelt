@@ -8,7 +8,7 @@ const helpString = [
 	"Set polling interval:\n\tpoll <seconds>",
 	"Add a device:\n\tadd <nickname> <host>",
 	"Remove a device:\n\tremove <nickname>"
-];
+].join("\n");
 const confPath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'] + "/.flock.json";
 const defaultConfig = {
 	pollrate: 300,
