@@ -9,7 +9,7 @@ const parserOptions = { compact: true };
 const confPath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'] + "/.flock.json";
 const defaultConfig = {
 	pollrate: 300,
-	devices: []
+	devices: {}
 };
 const smsURL = "https://textbelt.com/text";
 // Convert XML into a JS object.
@@ -86,9 +86,10 @@ function alarmToString(alarm) {
 	(async function poller() {
 		// Get the most recent version of the configuration file.
 		const config = await state.getState();
-		for (const goose of Array.from(config.devices)) try {
+		for (const gooseName in config.devices) try {
+			const host = config.devices[gooseName];
 			// It speaks to us... That's one smart goose.
-			const honker = await httpXml(goose.host);
+			const honker = await httpXml(host);
 			// Honk!?
 			// It's climate data and alarm data!
 			const data = {
@@ -106,7 +107,7 @@ function alarmToString(alarm) {
 				// We correlate the alarm with the device's climate data.
 				const curField = device.field.find(field => field._attributes.key === alarm.field)._attributes;
 				// What is the name of your goose?
-				const nickname = `MicroGoose ${goose.name}`;
+				const nickname = `MicroGoose ${gooseName}`;
 				// We now have a description of an alarm, a sensor, and untripped/tripped status.
 				const statusStr = `${alarm.limtype} ${curField.niceName}꞉ ${curField.value} ⁄ ${alarm.limit}`;
 				const tripped = alarm.status === "Tripped";

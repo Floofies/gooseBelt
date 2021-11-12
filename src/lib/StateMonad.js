@@ -46,6 +46,7 @@ class StateMonad {
 			return this;
 		})();
 	}
+	static checkDisk = checkDisk;
 	static readDisk = readDisk;
 	static writeDisk = writeDisk;
 }
