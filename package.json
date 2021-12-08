@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Telnet agent for IT WatchDogs MicroGoose which alerts via the TextBelt API",
 	"main": "src/index.js",
+	"type": "module",
 	"bin": {
 		"gbelt": "bin/gbelt_cli.js"
 	},
@@ -12,10 +13,10 @@
 	},
 	"keywords": [
 		"sms",
-		"smtp-server",
-		"email-to-text",
-		"email-relay",
-		"smtp-relay-server"
+		"alert",
+		"monitoring",
+		"itwatchdogs",
+		"microgoose"
 	],
 	"author": "Dani Glore",
 	"license": "MIT",
@@ -24,7 +25,10 @@
 	},
 	"homepage": "https://github.com/Floofies/gooseBelt#readme",
 	"dependencies": {
-		"node-fetch": "^2",
-		"xml-js": ""
+		"xml-js": "^1.6.11"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.9",
+		"typescript": "^4.5.2"
 	}
 }
