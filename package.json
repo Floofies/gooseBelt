@@ -2,10 +2,10 @@
 	"name": "goosebelt",
 	"version": "1.0.0",
 	"description": "Telnet agent for IT WatchDogs MicroGoose which alerts via the TextBelt API",
-	"main": "src/index.js",
+	"main": "dist/index.js",
 	"type": "module",
 	"bin": {
-		"gbelt": "bin/gbelt_cli.js"
+		"gbelt": "dist/bin/gbelt_cli.js"
 	},
 	"repository": {
 		"type": "git",
