@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import FileMonad from "../lib/FileMonad";
-import CommandProcessor from "../lib/CLP";
-import { defaultConfig } from "../index";
+import FileMonad from "../lib/FileMonad.js";
+import CommandProcessor from "../lib/CLP.js";
+import { defaultConfig } from "../index.js";
 const helpString = [
     "Goose Belt CLI syntax:",
     "\t$ gbelt <command> <...operands>",
@@ -54,28 +54,3 @@ async function cliReactor() {
     const output = await cli.exec(process.argv[2], process.argv[3], process.argv[4]) ?? "\n";
     process.stdout.write(output);
 }
-/*
-async function clp(command, op1, op2) {
-    const configFile = await new FileMonad(confPath, JSON.stringify(defaultConfig));
-    const config = JSON.parse(await configFile.read());
-    if (!command) return helpString;
-    else if (command === "list") {
-        return "HTTP polling interval: " + config.pollrate + " seconds.";
-        // TODO: console.table(config.devices);
-    } else if (command === "poll") {
-        if (!op1) return missingOp();
-        config.pollrate = op1;
-        await configFile.write(config);
-    } else if (command === "add") {
-        if (!op1 || !op2) return missingOp();
-        config.devices[op1] = op2;
-        await configFile.write(confPath, config);
-    } else if (command === "remove") {
-        if (!op1) return missingOp();
-        if (delete config.devices[op1])
-            await configFile.write(confPath, config);
-    } else {
-        process.exitCode = 1;
-        return `Unrecognized command \"${command}\".`;
-    }
-}*/ 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import FileMonad from "../lib/FileMonad";
-import CommandProcessor from "../lib/CLP";
-import { defaultConfig } from "../index";
+import FileMonad from "../lib/FileMonad.js";
+import CommandProcessor from "../lib/CLP.js";
+import { defaultConfig } from "../index.js";
 const helpString = [
 	"Goose Belt CLI syntax:",
 	"\t$ gbelt <command> <...operands>",
